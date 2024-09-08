@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Results</title>
+    <style>
+        * {
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        .nav_top {
+            height: 100px;
+            background-color: orangered;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #top_note {
+            color: white;
+            font-size: 5vmax;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav_line {
+            color: white;
+            font-size: 2vmax;
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(255, 30, 0);
+            height: 3.5vmax;
+        }
+
+        .vitalnav {
+            color: white;
+            font-size: 2vmax;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-left: 15vmax;
+        }
+
+        #nl1, #nl2, #nl3 {
+            color: white;
+            font-size: 1.8vmax;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: rgb(255, 30, 0);
+            border: 0.1vmax solid transparent;
+            box-shadow: 0.5vmax 0.7vmax 0.7vmax rgb(211, 18, 18);
+            width: 15vmax;
+            height: 2.8vmax;
+        }
+
+        #nl2, #nl3 {
+            margin-left: 8vmax;
+        }
+
+        .mainBeg {
+            font-size: 5vmax;
+            margin-top: 5vmax;
+            text-align: center;
+        }
+
+        .semi_main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bdy_btns {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5vmax;
+        }
+
+        #bdy_btn1, #bdy_btn2 {
+            background-color: rgb(255, 30, 0);
+            border: 0.1vmax solid transparent;
+            box-shadow: 0.5vmax 0.7vmax 0.7vmax rgb(211, 18, 18);
+            width: 18vmax;
+            height: 5vmax;
+            color: white;
+            font-size: 1vmax;
+        }
+
+        #bdy_btn2 {
+            margin-left: 2vmax;
+        }
+
+        #bdy_btn1 {
+            margin-right: 2vmax;
+        }
+
+        .nutrition-results {
+            margin: 3vmax;
+            font-size: 2vmax;
+        }
+
+        .nutrition-results p {
+            margin: 1vmax 0;
+        }
+
+        .nutrition-results img {
+            margin-top: 2vmax;
+            max-width: 400px;
+        }
+
+        /* Hidden links for navigation */
+        .hidden-link {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav_top">
+        <div id="top_note">Let's Know the Food better!</div>
+    </div>
+
+    <div class="nav_line">
+        <div class="vitalnav">
+            <button id="nl1">Content</button>
+            <button id="nl2">About Us</button>
+            <button id="nl3">Customer Care</button>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="semi_main">
+            <div class="mainBeg">
+                Go Ahead to Know your food better
+            </div>
+            <div class="bdy_btns">
+                <button id="bdy_btn1">Check the food that suits you</button>
+                <button id="bdy_btn2">Check the nutrients that your food got</button>
+            </div>
+        </div>
+
+        <div class="nutrition-results">
+            <h1>Nutrition Results</h1>
+
+            {% if nutrition.error %}
+                <p>Error: {{ nutrition.error }}</p>
+            {% else %}
+                <h2>Results for "{{ food_name }}"</h2>
+                <p><strong>Protein:</strong> {{ nutrition.protein }} g</p>
+                <p><strong>Calcium:</strong> {{ nutrition.calcium }} g</p>
+                <p><strong>Fat:</strong> {{ nutrition.fat }} g</p>
+                <p><strong>Carbohydrates:</strong> {{ nutrition.carbs }} g</p>
+                <p><strong>Vitamins:</strong> {{ nutrition.vitamins }} g</p>
+            {% endif %}
+
+            <a href="/">Back to home</a>
+        </div>
+    </div>
+
+    <!-- Hidden links for navigation -->
+    <a href="content.html" id="link_it1" class="hidden-link">Content</a>
+    <a href="about.html" id="link_it2" class="hidden-link">About Us</a>
+    <a href="customer_care.html" id="link_it3" class="hidden-link">Customer Care</a>
+    <a href="nutrients.html" id="blink_it2" class="hidden-link">Check the nutrients</a>
+
+    <script>
+        let btn1 = document.querySelector("#nl1");
+        let mylink1 = document.querySelector("#link_it1");
+        btn1.addEventListener("click", btn1Func);
+        function btn1Func() {
+            mylink1.click();
+        }
+
+        let btn2 = document.querySelector("#nl2");
+        let mylink2 = document.querySelector("#link_it2");
+        btn2.addEventListener("click", btn2Func);
+        function btn2Func() {
+            mylink2.click();
+        }
+
+        let btn3 = document.querySelector("#nl3");
+        let mylink3 = document.querySelector("#link_it3");
+        btn3.addEventListener("click", btn3Func);
+        function btn3Func() {
+            mylink3.click();
+        }
+
+        let bdy_Btn2 = document.querySelector("#bdy_btn2");
+        let myBlink2 = document.querySelector("#blink_it2");
+        bdy_Btn2.addEventListener("click", bdy2Func);
+        function bdy2Func() {
+            myBlink2.click();
+        }
+    </script>
+</body>
+</html>

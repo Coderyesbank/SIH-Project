@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Classification</title>
+    <style>
+        * {
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        #hea {
+            font-size: 7vmax;
+            background-color: orangered;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1vmax 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 4vmax;
+            color: orangered;
+            margin-top: 3vmax;
+        }
+
+        form {
+            margin-top: 2vmax;
+            text-align: center;
+            margin-bottom: 2vmax;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #lfform {
+            font-size: 4vmax;
+            color: orangered;
+            text-shadow: 0.1vmax 0.1vmax 0.1vmax rgb(212, 64, 10);
+            margin-bottom: 1vmax;
+        }
+
+        input[type="text"], input[type="file"] {
+            padding: 1vmax;
+            margin-bottom: 1vmax;
+            border: 0.1vmax solid orangered;
+            border-radius: 1vmax;
+            font-size: 2vmax;
+            width: 36vmax;
+        }
+
+        button[type="submit"] {
+            border: 0.1vmax solid orangered;
+            border-radius: 1vmax;
+            padding: 1vmax 2vmax;
+            background-color: rgb(228, 90, 40);
+            color: white;
+            font-size: 2vmax;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div id="hea">Food Classification</div>
+    
+    <h1>Upload an Image or Enter Food Name</h1>
+    
+    <!-- Form for image upload -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload Image</button>
+    </form>
+
+    <!-- Form for manual input -->
+    <form action="/manual" method="post">
+        <label id="lfform" for="food-name">Enter Food Name:</label>
+        <input type="text" id="food-name" name="food_name" placeholder="e.g., biriyani" required>
+        <button id="submit-Btn" type="submit">Get Nutrition</button>
+    </form>
+</body>
+</html>
